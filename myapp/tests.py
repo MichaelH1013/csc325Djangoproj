@@ -27,5 +27,5 @@ class ViewTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(
             response.json(),
-            {"status": "ok", "app": "csc325Djangoproj"},
+            {"status": "ok", "app": "csc325Djangoproj", "version": "1.0"},
         )
