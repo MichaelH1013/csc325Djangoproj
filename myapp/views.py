@@ -13,4 +13,4 @@ def about(request):
 
 @api_view(["GET"])
 def api_status(request):
-    return Response({"status": "ok", "app": "csc325Djangoproj"})
+    return Response({"status": "ok", "app": "csc325Djangoproj", "version": "1.0"})

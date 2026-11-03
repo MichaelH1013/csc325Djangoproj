@@ -17,6 +17,7 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
+      # Setup: downloads the code and installs Python.
       - name: Setup - Check out code
         uses: actions/checkout@v4
 
@@ -25,15 +26,18 @@ jobs:
         with:
           python-version: '3.14'
 
+      # Dependencies: installs the packages listed in requirements.txt.
       - name: Dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      # Test: runs all the tests, and a failure stops the pipeline.
       - name: Test
         run: |
           python manage.py test
 
+      # Deploy: builds the site and publishes it to GitHub Pages.
       - name: Deploy - Build site
         run: |
           python build_site.py
