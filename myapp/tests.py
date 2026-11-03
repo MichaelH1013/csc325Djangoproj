@@ -20,3 +20,12 @@ class ViewTests(TestCase):
             response.content.decode(),
             "<h1>About Page</h1><p>This is the about page of my Django application.</p>",
         )
+
+    def test_api_status_view(self):
+        response = self.client.get(reverse("api_status"))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(
+            response.json(),
+            {"status": "ok", "app": "csc325Djangoproj"},
+        )
